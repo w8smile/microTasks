@@ -1,34 +1,26 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {Button} from "./components/Button";
 
 function App() {
-    // const myFirstSubscriber = () => {
-    //     console.log("I am Vasya!")
-    // }
-    //
-    // const secondSubscriber = () => {
-    //     console.log("I am Petya!")
-    // }
-
-
-    const onClickHandler = (name:string) => {
-        console.log(name)
+    const Button1foo=(subscriber:string, age:number, adress: string)=>{
+        console.log(subscriber, age, adress)
     }
-// const foo2 =(num:number) => {
-//     console.log(num)
-//
-// }
-//
-//     const foo1 = ()=> {
-//         console.log(100200)
-//     }
-  return (
+    const Button2foo=(subscriber:string, age:number)=>{
+        console.log(subscriber, age)
+    }
+    const StupidButton = ()=>{
+        console.log('Iam stupid button')
+    }
+
+
+    return (
     <div className="App">
-      <button onClick={(event)=>{console.log("Ivan!")}}>MyYouTubeChanel-1</button>
-      <button onClick={(event)=>onClickHandler("Vasya")}>MyYouTubeChanel-2</button>
-      {/*  <button onClick={foo1}>1</button>*/}
-      {/*  <button onClick={()=>foo2(10200)}>2</button>*/}
+        <Button name={"MyYouTubeChannel-1"} callback={()=>Button1foo("Iam Vasya",21,"live in Krichev")}/>
+        <Button name={"MyYouTubeChannel-2"} callback={()=>Button2foo("Iam Ivan",22)}/>
+        <Button name={'StupidButton'} callback={StupidButton}/>
+
     </div>
   );
 }
