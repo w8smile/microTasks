@@ -1,34 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {Simulate} from "react-dom/test-utils";
+import reset = Simulate.reset;
 
 function App() {
-    // const myFirstSubscriber = () => {
-    //     console.log("I am Vasya!")
-    // }
-    //
-    // const secondSubscriber = () => {
-    //     console.log("I am Petya!")
-    // }
 
+    let[a,setA]=useState(1)
 
-    const onClickHandler = (name:string) => {
-        console.log(name)
+    const Reset =()=>{
+        setA(a=0)
+        console.log((a))
     }
-// const foo2 =(num:number) => {
-//     console.log(num)
-//
-// }
-//
-//     const foo1 = ()=> {
-//         console.log(100200)
-//     }
+  const onClickHandler =() => {
+      setA(++a);
+      console.log((a))
+  }
+
+
+
   return (
     <div className="App">
-      <button onClick={(event)=>{console.log("Ivan!")}}>MyYouTubeChanel-1</button>
-      <button onClick={(event)=>onClickHandler("Vasya")}>MyYouTubeChanel-2</button>
-      {/*  <button onClick={foo1}>1</button>*/}
-      {/*  <button onClick={()=>foo2(10200)}>2</button>*/}
+      <h1>{a}</h1>
+      <button onClick={onClickHandler}>number</button>
+      <button onClick={Reset}>0</button>
     </div>
   );
 }
