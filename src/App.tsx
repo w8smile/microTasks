@@ -1,32 +1,43 @@
 import {useState} from "react";
-
 import React from 'react';
-import {Cars} from "./Cars";
+import {FullInput} from "./components/FullInput";
+import {Input} from "./components/Input";
+import {Button} from "./components/Button";
 
 function App() {
-  // const [students, setStudents] = useState([
-  //       {id: 1, name: "James", age: 8},
-  //       {id: 2, name: "Robert", age: 18},
-  //       {id: 3, name: "John", age: 28},
-  //       {id: 4, name: "Michael", age: 38},
-  //       {id: 5, name: "William", age: 48},
-  //       {id: 6, name: "David", age: 58},
-  //       {id: 7, name: "Richard", age: 68},
-  //       {id: 8, name: "Joseph", age: 78},
-  //       {id: 9, name: "Thomas", age: 88},
-  //       {id: 10, name: "Charles", age: 98},
-  //       {id: 11, name: "Christopher", age: 100},
-  //     ]
-  // )
+    const [message, setMessage] = useState([
+            {message: 'message1'},
+            {message: 'message2'},
+            {message: 'message3'},
+            {message: 'message4'},
+            {message: 'message5'}
+        ]
+    )
 
-  const topCars = [
-      {manufacturer: 'BMW', model: 'X5'},
-      {manufacturer: 'Mersedes', model: 'MLS'},
-      {manufacturer: 'Audi', model: 'Q7'}
-  ]
-  return (
-      <Cars topCars={topCars}/>
-  );
+    const callBackButtonHandler = () => {
+        addMessage(title);
+        setTitle('')
+    }
+
+    let[title,setTitle]=useState('')
+    const addMessage = (title: string) => {
+        let newMessage = {message: title}
+        setMessage([newMessage, ...message])
+
+    }
+
+    return (
+        <div className={"App"}>
+            <Input setTitle={setTitle} title={title}/>
+            <Button name={'+'} callBack={callBackButtonHandler}/>
+            {message.map((el, index) => {
+                return (
+                    <div key={index}>{el.message}</div>
+                )
+            })}
+        </div>
+    );
 }
+
 
 export default App;
